@@ -18,7 +18,17 @@ const Header = () => {
     </>
 
     const myService = <>
-        <Link to="/myservice"><li>My Service</li></Link>
+        <Link to="/myservice"><li>Add-Service</li></Link>
+    </>
+    const addservices = <>
+        <Link to="/addservices"><li>My-services</li></Link>
+    </>
+    const myschedules = <>
+        <Link to="/myschedules"><li>My-schedules</li></Link>
+    </>
+
+    const mybooking = <>
+        <Link to="/mybooking"><li>My-Bookings</li></Link>
     </>
 
 
@@ -34,14 +44,17 @@ const Header = () => {
                         <li >
                             <a>Dashboard</a>
                             <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
+                                {addservices}
                                 {myService}
+                                {myschedules}
+                                {mybooking}
                             </ul>
                         </li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl">Clothing Swap</a>
             </div>
+            
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {links}
@@ -49,8 +62,10 @@ const Header = () => {
                         <details>
                             <summary>Dashboard</summary>
                             <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
+                                {addservices}
                                 {myService}
+                                {myschedules}
+                                {mybooking}
                             </ul>
                         </details>
                     </li>
@@ -64,7 +79,7 @@ const Header = () => {
                 </div>
                 {
                     user ?
-                    <button onClick={handleSingOut} className="btn bg-gradient-to-r from-sky-500 to-indigo-500 border-0 text-[#cae9ff] capitalize">Sing Out</button>
+                    <button onClick={handleSingOut} className="btn bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-[#FFF] capitalize">Sing Out</button>
                     :
                     <Link to="/login">
                         <button className="btn bg-gradient-to-r from-sky-500 to-indigo-500 border-0 text-[#cae9ff] capitalize">Login</button>

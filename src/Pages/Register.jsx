@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import GoogleLogin from "../components/GoogleLogin";
 import Header from "../components/Header";
+import swal from "sweetalert";
+import axios from "axios";
 
 
 const Register = () => {
@@ -19,10 +21,29 @@ const Register = () => {
         const password = form.get('password');
         console.log(name, photo, email, password);
 
+        const isValidCarPassword = /^(?=.*[A-Z]).+$/.test(password);
+        const isValidSpacialPassword = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).+$/.test(password);
+
+        if (password.length < 6) {
+            swal("PLease provide 6 character password!", "error");
+            return
+        }
+
+        if (!isValidCarPassword) {
+            swal("PLease provide capital letter!", "error");
+            return
+        }
+        if (!isValidSpacialPassword) {
+            swal("PLease provide special character !", "error");
+            return
+        }
+
+
 
         createUser(email, password)
             .then(result => {
                 navigate('/')
+
             })
             .catch(error => {
                 console.error(error)
@@ -70,7 +91,7 @@ const Register = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn bg-gradient-to-r from-sky-500 to-indigo-500 border-0 text-[#cae9ff] capitalize">Register</button>
+                                <button className="btn bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-[#FFF] capitalize">Register</button>
                             </div>
                         </form>
                         <div className="w-3/4 mx-auto"> <GoogleLogin></GoogleLogin></div>

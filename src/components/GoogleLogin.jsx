@@ -23,7 +23,7 @@ const GoogleLogin = () => {
 
     return (
         <div>
-            <button className='btn w-full bg-gradient-to-r from-sky-500 to-indigo-500 border-0 text-[#cae9ff] capitalize' onClick={handelGoogleLogin}>Google Login</button>
+            <button className='btn w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-[#FFF] capitalize' onClick={handelGoogleLogin}>Google Login</button>
         </div>
     );
 };

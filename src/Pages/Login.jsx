@@ -3,10 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import GoogleLogin from "../components/GoogleLogin";
 import Header from "../components/Header";
+import axios from "axios";
 
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     console.log('location in the login page', location)
@@ -20,8 +21,11 @@ const Login = () => {
         console.log(email, password);
         signIn(email, password)
             .then(result => {
+                axios.post(`http://localhost:3000/jwt`, { email }, { withCredentials: true })
+                    .then(res => {
 
-                navigate(location?.state ? location.state : '/');
+                        navigate(location?.state ? location.state : '/');
+                    })
 
             })
             .catch(error => {
@@ -58,10 +62,10 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn bg-gradient-to-r from-sky-500 to-indigo-500 border-0 text-[#cae9ff] capitalize">Login</button>
+                                <button className="btn bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 border-0 text-[#cae9ff] capitalize">Login</button>
                             </div>
                         </form>
-                        <div className="w-3/4 mx-auto"> <GoogleLogin></GoogleLogin></div>
+                        <div className="w-3/4 mx-auto"><GoogleLogin></GoogleLogin></div>
                         <p className="text-center pb-4 text-[#cae9ff]">Don't have an account? <Link to="/register"><span className="text-cyan-400">Register</span></Link></p>
                     </div>
                 </div>

@@ -1,55 +1,90 @@
+import { useContext } from "react";
 import Header from "../components/Header";
+import { AuthContext } from "../providers/AuthProvider";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 
 const MyService = () => {
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const handelSubmit = (e) => {
+        e.preventDefault()
+        const name = e.target.name.value;
+        const image = e.target.image.value;
+        const area = e.target.area.value;
+        const type = e.target.country.value;
+        const price = e.target.price.value;
+        const discription = e.target.description.value;
+        const userEmail = user.email;
+        const userName = user.displayName;
+        const data = { name, image, type, price, area, discription, userEmail, userName }
+        axios.post('http://localhost:3000/addservices', data)
+            .then(res => {
+                swal("Good job!", "Sucessfully added services!", "success");
+                navigate('/')
+            })
+
+    }
+
+
+
     return (
         <div>
             <Header></Header>
-            <h1 className="text-center text-black text-5xl">My service</h1>
+            <h1 className="text-center text-black text-5xl">Add service</h1>
+            <div className="my-6">
+                <hr />
+            </div>
 
-            <form>
+            <form onSubmit={handelSubmit}>
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
-                        <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
+                        <div>
+                            <div className="flex justify-start items-center gap-6">
+                                <div className="avatar">
+                                    <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
+                                </div>
+                            </div>
+
+                        </div>
                         <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
 
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div class="sm:col-span-4">
-                                <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Service Name</label>
+                                <label class="block text-sm font-medium leading-6 text-gray-900">Service Name</label>
                                 <div class="mt-2">
                                     <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                        <input type="text" name="username" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Enter Service Name" />
+                                        <input type="text" name="name" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Enter Service Name" />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="sm:col-span-4">
-                                <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Service Area</label>
+                                <label class="block text-sm font-medium leading-6 text-gray-900">Service Area</label>
                                 <div class="mt-2">
                                     <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                        <input type="text" name="username" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Enter Service Area" />
+                                        <input type="text" name="area" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Enter Service Area" />
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-span-full">
-                                <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Service photo</label>
-                                <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                                    <div class="text-center">
-                                        <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
-                                        </svg>
-                                        <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                                            <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                                                <span>Upload a file</span>
-                                                <input id="file-upload" name="file-upload" type="file" class="sr-only" />
-                                            </label>
-                                            <p class="pl-1">or drag and drop</p>
-                                        </div>
-                                        <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                            <div class="sm:col-span-4">
+                                <label class="block text-sm font-medium leading-6 text-gray-900">Service Image</label>
+                                <div class="mt-2">
+                                    <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                        <input type="text" name="image" id="image" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Enter image url" />
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -64,7 +99,7 @@ const MyService = () => {
                             <div class="sm:col-span-4">
                                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Price</label>
                                 <div class="mt-2">
-                                    <input id="text" name="text" type="text" placeholder="Enter Service Price" class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                    <input id="price" name="price" type="number" placeholder="Enter Service Price" class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                                 </div>
                             </div>
 
@@ -72,12 +107,12 @@ const MyService = () => {
                                 <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Category</label>
                                 <div class="mt-2">
                                     <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                        <option>TrendShift</option>
-                                        <option>GarmentExchange</option>
-                                        <option>ClothCycle</option>
-                                        <option>FashionTrade</option>
-                                        <option>WardrobeExchange</option>
-                                        <option>SwapStyle</option>
+                                        <option value='TrendShift' >TrendShift</option>
+                                        <option value='GarmentExchange' >GarmentExchange</option>
+                                        <option value='ClothCycle' >ClothCycle</option>
+                                        <option value='FashionTrade' >FashionTrade</option>
+                                        <option value='WardrobeExchange' >WardrobeExchange</option>
+                                        <option value='SwapStyle' >SwapStyle</option>
                                     </select>
                                 </div>
                             </div>
@@ -85,11 +120,15 @@ const MyService = () => {
                             <div class="col-span-full">
                                 <label for="about" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
                                 <div class="mt-2">
-                                    <textarea id="description" name="description" placeholder="description" rows="3" class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                                    <textarea type="text" id="description" name="description" placeholder="description" rows="3" class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
                                 </div>
-                                
+
                             </div>
                         </div>
+                    </div>
+
+                    <div>
+                        <input type="submit" value="Add your services" />
                     </div>
 
                 </div>

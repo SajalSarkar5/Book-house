@@ -12,6 +12,10 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import AuthProvider from './providers/AuthProvider';
 import MyService from './Pages/MyService';
+import AddServices from './Pages/AddServices';
+import MySchedules from './Pages/MySchedules';
+import Moredetails from './Pages/Moredetails';
+import Mybookings from './Pages/Mybookings';
 
 const router = createBrowserRouter([
   {
@@ -24,8 +28,20 @@ const router = createBrowserRouter([
     element: <Service></Service>
   },
   {
+    path: '/addservices',
+    element: <AddServices></AddServices>
+  },
+  {
     path: '/myservice',
     element: <MyService></MyService>
+  },
+  {
+    path: '/myschedules',
+    element: <MySchedules></MySchedules>
+  },
+  {
+    path: '/mybooking',
+    element: <Mybookings></Mybookings>
   },
   {
     path: '/login',
@@ -34,6 +50,11 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register></Register>
+  },
+  {
+    path: '/service/:id',
+    loader: ({ params }) => fetch(`http://localhost:3000/singleservice/${params.id}`),
+    element: <Moredetails></Moredetails>
   }
 ]);
 
