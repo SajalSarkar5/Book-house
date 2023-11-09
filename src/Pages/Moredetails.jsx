@@ -58,8 +58,6 @@ const Moredetails = () => {
                                 <div><p className='text-lg font-normal'>{user.email}</p></div>
                             </div>
                         </div>
-
-
                         <div>
                             <button onClick={() => document.getElementById('my_modal_4').showModal()} className='btn bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 border-0 text-[#cae9ff] capitalize'>Book Now</button>
                         </div>
