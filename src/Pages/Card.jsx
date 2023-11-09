@@ -8,7 +8,7 @@ const Card = () => {
     const [cardImage, setCardImage] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/services`, { withCredentials: true })
+        axios.get(`https://backend-nine-umber.vercel.app/services`, { withCredentials: true })
             .then(res => {
                 setCardImage(res.data)
             })

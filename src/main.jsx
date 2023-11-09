@@ -19,6 +19,7 @@ import Moredetails from './Pages/Moredetails';
 import Mybookings from './Pages/Mybookings';
 import Root from './Layout/Root'
 import MyPadingWork from './Pages/MyPadingWork';
+import PrivateRoute from './Pages/PrivateRoute';
 
 import('preline');
 
@@ -38,19 +39,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/addservices',
-        element: <AddServices></AddServices>
+        element: <PrivateRoute><AddServices></AddServices></PrivateRoute>
       },
       {
         path: '/myservice',
-        element: <MyService></MyService>
+        element: <PrivateRoute><MyService></MyService></PrivateRoute>
       },
       {
         path: '/myschedules',
-        element: <MySchedules></MySchedules>
+        element: <PrivateRoute><MySchedules></MySchedules></PrivateRoute>
       },
       {
         path: '/mybooking',
-        element: <Mybookings></Mybookings>
+        element: <PrivateRoute><Mybookings></Mybookings></PrivateRoute>
       },
       {
         path: '/login',
@@ -62,12 +63,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/mypaindingwork',
-        element: <MyPadingWork></MyPadingWork>
+        element: <PrivateRoute><MyPadingWork></MyPadingWork></PrivateRoute>
       },
       {
         path: '/service/:id',
-        loader: ({ params }) => fetch(`http://localhost:3000/singleservice/${params.id}`),
-        element: <Moredetails></Moredetails>
+        loader: ({ params }) => fetch(`https://backend-nine-umber.vercel.app/singleservice/${params.id}`),
+        element: <PrivateRoute><Moredetails></Moredetails></PrivateRoute>
       }
     ],
   },

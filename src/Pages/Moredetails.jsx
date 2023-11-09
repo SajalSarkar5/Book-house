@@ -21,7 +21,7 @@ const Moredetails = () => {
         const text = e.target.text.value;
         const price = e.target.price.value;
         const data = { name, image, useremail, buyuserEmail, date, text, price, type, area }
-        axios.post('http://localhost:3000/booking', data, { withCredentials: true })
+        axios.post('https://backend-nine-umber.vercel.app/booking', data, { withCredentials: true })
             .then(res => {
                 document.getElementById('my_modal_4').close()
                 swal("Good job!", "Booking sucessfully", "success");

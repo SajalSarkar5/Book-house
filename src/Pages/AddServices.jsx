@@ -13,7 +13,7 @@ const AddServices = () => {
 
     useEffect(() => {
         if (email) {
-            axios.get(`http://localhost:3000/myservices?email=${email}`)
+            axios.get(`https://backend-nine-umber.vercel.app/myservices?email=${email}`)
                 .then(res => {
                     console.log(res.data)
                     setMyService(res.data)

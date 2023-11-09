@@ -10,7 +10,7 @@ const Mybookings = () => {
     console.log(email)
     useEffect(() => {
         if (email) {
-            axios.get(`http://localhost:3000/mybooking?email=${email}`, { withCredentials: true })
+            axios.get(`https://backend-nine-umber.vercel.app/mybooking?email=${email}`, { withCredentials: true })
                 .then(res => {
                     setUsers(res.data)
                 })

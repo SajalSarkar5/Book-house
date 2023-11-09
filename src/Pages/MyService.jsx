@@ -23,7 +23,7 @@ const MyService = () => {
         const data = { name, image, type, price, area, discription, userEmail, userName }
         console.log(data)
 
-        axios.post('http://localhost:3000/addservices', data, { withCredentials: true })
+        axios.post('https://backend-nine-umber.vercel.app/addservices', data, { withCredentials: true })
             .then(res => {
                 console.log(res.data)
                 swal("Good job!", "Sucessfully added services!", "success");

@@ -11,7 +11,7 @@ const MyPadingWork = () => {
     const email = user.email;
     useEffect(() => {
         if (email) {
-            axios.get(`http://localhost:3000/mypainding?email=${email}`, { withCredentials: true })
+            axios.get(`https://backend-nine-umber.vercel.app/mypainding?email=${email}`, { withCredentials: true })
                 .then(res => {
                     console.log(res.data)
                     setUsers(res.data)

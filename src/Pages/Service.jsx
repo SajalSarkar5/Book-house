@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Service = () => {
     const [services, setServices] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:3000/allservices`, { withCredentials: true })
+        axios.get(`https://backend-nine-umber.vercel.app/allservices`, { withCredentials: true })
             .then(res => {
                 console.log(res.data)
                 setServices(res.data)

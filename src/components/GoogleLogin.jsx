@@ -16,7 +16,7 @@ const GoogleLogin = () => {
         googleSignIn()
             .then((res) => {
                 const email = res.user.email;
-                axios.post(`http://localhost:3000/jwt`, { email }, { withCredentials: true })
+                axios.post(`https://backend-nine-umber.vercel.app/jwt`, { email }, { withCredentials: true })
                     .then(res => {
                         swal("Good job!", "You clicked the button!", "success");
                         navigate('/')
