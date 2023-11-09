@@ -46,6 +46,7 @@ const Moredetails = () => {
                             <h5 class="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Service Description: : <span className='text-lg font-normal'>{discription}</span></h5>
                         </div>
 
+
                         <div className='flex justify-center items-center gap-6 py-2'>
                             <div className="avatar">
                                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
