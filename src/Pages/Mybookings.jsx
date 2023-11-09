@@ -6,13 +6,16 @@ const Mybookings = () => {
     const { user } = useContext(AuthContext)
     const [users, setUsers] = useState([])
     const email = user.email;
+    console.log(email)
     useEffect(() => {
-        axios.get(`http://localhost:3000/mybooking?email=${email}`, { withCredentials: true })
-            .then(res => {
-                console.log(res.data)
-                // setUsers(res.data)
-            })
-    }, [])
+        if (email) {
+            axios.get(`http://localhost:3000/mybooking?email=${email}`, { withCredentials: true })
+                .then(res => {
+                    setUsers(res.data)
+                })
+        }
+
+    }, [user])
     return (
         <div>
             {

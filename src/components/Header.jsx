@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import swal from 'sweetalert';
+import('preline')
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -38,9 +39,10 @@ const Header = () => {
 
                             {
                                 user && <>
-                                    <NavLink to='/myservice' class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">Add service</NavLink>
+                                    <NavLink to='/addservices' class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">My service</NavLink>
                                     <NavLink to='/mybooking' class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">My Bookings</NavLink>
-                                    <NavLink class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">My service</NavLink>
+                                    <NavLink to="/myservice" class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">Add service</NavLink>
+                                    <NavLink to="/mypaindingwork" class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">My painding Work</NavLink>
                                 </>
                             }
 

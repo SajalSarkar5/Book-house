@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+
 import './index.css'
-import('preline');
 import {
   createBrowserRouter,
   RouterProvider,
@@ -17,7 +17,10 @@ import AddServices from './Pages/AddServices';
 import MySchedules from './Pages/MySchedules';
 import Moredetails from './Pages/Moredetails';
 import Mybookings from './Pages/Mybookings';
-import Root from './Layout/Root';
+import Root from './Layout/Root'
+import MyPadingWork from './Pages/MyPadingWork';
+
+import('preline');
 
 const router = createBrowserRouter([
   {
@@ -56,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/mypaindingwork',
+        element: <MyPadingWork></MyPadingWork>
       },
       {
         path: '/service/:id',
