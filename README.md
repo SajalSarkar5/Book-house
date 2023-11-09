@@ -4,7 +4,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 Currently, two official plugins are available:
 live link : 
-Website Features :
+-Website Features :
 - The website is designed responsively for all devices.
 - There is a banner page on my website where you will get a see more button click on that button you will know about all the services.
 - My website has a booking page where you can book your services.
