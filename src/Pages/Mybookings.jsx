@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Mybookings = () => {
     const { user } = useContext(AuthContext)
@@ -17,7 +18,7 @@ const Mybookings = () => {
 
     }, [user])
     return (
-        <div>
+        <div className='flex justify-center items-center my-14'>
             {
                 users?.map((item, i) => {
                     return <div key={i}>
@@ -31,41 +32,24 @@ const Mybookings = () => {
                                 />
                             </div>
                             <div class="p-6">
-                                <h6 class="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-pink-500 uppercase">
-                                    startups
+                                <h6 class="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal ">
+                                    <span>Name : </span><span className='text-lg font-medium'>{item.name}</span>
                                 </h6>
                                 <h4 class="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                                    Lyft launching cross-platform service this week
+                                    Type : <span className='text-lg font-medium'>{item.type}</span>
+                                </h4>
+                                <h4 class="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                                    Area : <span className='text-lg font-medium'>{item.area}</span>
                                 </h4>
                                 <p class="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
-                                    Like so many organizations these days, Autodesk is a company in
-                                    transition. It was until recently a traditional boxed software company
-                                    selling licenses. Yet its own business model disruption is only part of
-                                    the story
+                                    <span className='text-lg font-medium'>Discription : </span> <span>{item.discription}</span>
                                 </p>
-                                <a class="inline-block" href="#">
-                                    <button
-                                        class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-pink-500 uppercase align-middle transition-all rounded-lg select-none hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                        type="button"
-                                    >
-                                        Learn More
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            stroke="currentColor"
-                                            aria-hidden="true"
-                                            class="w-4 h-4"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                </a>
+                                <p class="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+                                    <span className='text-lg font-medium'>Price : </span> $<span>{item.price}</span>
+                                </p>
+                                <Link to="/">
+                                    <button className='btn text-white bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 capitalize'>Go to Home</button>
+                                </Link>
                             </div>
                         </div>
 
