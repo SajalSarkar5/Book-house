@@ -1,8 +1,11 @@
 
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+
 import toast from 'react-hot-toast';
+import axios from 'axios';
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 
 const GoogleLogin = () => {
 
@@ -12,8 +15,13 @@ const GoogleLogin = () => {
     const handelGoogleLogin = () => {
         googleSignIn()
             .then((res) => {
-                toast.success(`${res.user.displayName} Successfully login`)
-                navigate('/')
+                const email = res.user.email;
+                axios.post(`http://localhost:3000/jwt`, { email }, { withCredentials: true })
+                    .then(res => {
+                        swal("Good job!", "You clicked the button!", "success");
+                        navigate('/')
+                    })
+
             }).catch((error) => {
                 toast.error("Login failed !")
 

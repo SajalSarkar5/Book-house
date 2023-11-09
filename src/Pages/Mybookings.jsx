@@ -5,18 +5,16 @@ import axios from 'axios';
 const Mybookings = () => {
     const { user } = useContext(AuthContext)
     const [users, setUsers] = useState([])
-
     const email = user.email;
-
     useEffect(() => {
-        axios.get(`http://localhost:3000/mybooking?email=${email}`)
+        axios.get(`http://localhost:3000/mybooking?email=${email}`, { withCredentials: true })
             .then(res => {
-                setUsers(res.data)
+                console.log(res.data)
+                // setUsers(res.data)
             })
     }, [])
     return (
         <div>
-
             {
                 users?.map((item, i) => {
                     return <div key={i}>

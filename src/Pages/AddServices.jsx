@@ -5,18 +5,18 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const AddServices = () => {
     const { user } = useContext(AuthContext)
-    const email = user.email;
-    console.log(email)
-    if (email) {
-        useEffect(() => {
-            axios.get(`http://localhost:3000/myservices?email=${email}`)
-                .then(res => {
-                    console.log(res.data)
-                })
 
-        }, [])
+    console.log(user)
+    // if (email) {
+    //     useEffect(() => {
+    //         axios.get(`http://localhost:3000/myservices?email=${email}`)
+    //             .then(res => {
+    //                 console.log(res.data)
+    //             })
 
-    }
+    //     }, [])
+
+    // }
 
 
 

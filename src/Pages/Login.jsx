@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import GoogleLogin from "../components/GoogleLogin";
-import Header from "../components/Header";
 import axios from "axios";
+import swal from "sweetalert";
 
 
 const Login = () => {
@@ -23,10 +23,9 @@ const Login = () => {
             .then(result => {
                 axios.post(`http://localhost:3000/jwt`, { email }, { withCredentials: true })
                     .then(res => {
-
+                        swal("Good job!", "You clicked the button!", "success");
                         navigate(location?.state ? location.state : '/');
                     })
-
             })
             .catch(error => {
                 console.error(error);
@@ -37,7 +36,6 @@ const Login = () => {
 
     return (
         <div>
-            <Header></Header>
             <div className="mt-8">
                 <h1 className="text-3xl font-semibold text-cyan-400 text-center"> Login Page</h1>
             </div>

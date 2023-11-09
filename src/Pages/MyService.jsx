@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Header from "../components/Header";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +7,7 @@ import swal from "sweetalert";
 
 const MyService = () => {
     const { user } = useContext(AuthContext)
+    console.log(user)
     const navigate = useNavigate()
 
     const handelSubmit = (e) => {
@@ -21,8 +21,11 @@ const MyService = () => {
         const userEmail = user.email;
         const userName = user.displayName;
         const data = { name, image, type, price, area, discription, userEmail, userName }
-        axios.post('http://localhost:3000/addservices', data)
+        console.log(data)
+
+        axios.post('http://localhost:3000/addservices', data, { withCredentials: true })
             .then(res => {
+                console.log(res.data)
                 swal("Good job!", "Sucessfully added services!", "success");
                 navigate('/')
             })
@@ -30,10 +33,8 @@ const MyService = () => {
     }
 
 
-
     return (
         <div>
-            <Header></Header>
             <h1 className="text-center text-black text-5xl">Add service</h1>
             <div className="my-6">
                 <hr />
@@ -46,7 +47,7 @@ const MyService = () => {
                             <div className="flex justify-start items-center gap-6">
                                 <div className="avatar">
                                     <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                        <img src={user?.photoURL} />
                                     </div>
                                 </div>
                                 <div>
@@ -128,7 +129,7 @@ const MyService = () => {
                     </div>
 
                     <div>
-                        <input type="submit" value="Add your services" />
+                        <input className="btn btn-primary" type="submit" value="Add your services" />
                     </div>
 
                 </div>

@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBLKGODC-xEAmb-TGK2cXAjCDqxuyH8NEc",
-  authDomain: "clothing-swap-37b61.firebaseapp.com",
-  projectId: "clothing-swap-37b61",
-  storageBucket: "clothing-swap-37b61.appspot.com",
-  messagingSenderId: "381150405067",
-  appId: "1:381150405067:web:8db7a055527cdd202ad64e"
+  apiKey: "AIzaSyAjQp-FKCYIH9j8nzuMGZ9BlkpPC7mC49s",
+  authDomain: "user-email-password-auth-199c7.firebaseapp.com",
+  projectId: "user-email-password-auth-199c7",
+  storageBucket: "user-email-password-auth-199c7.appspot.com",
+  messagingSenderId: "884543858706",
+  appId: "1:884543858706:web:4392ff6ad8d67001a750cb"
 };
 
 // Initialize Firebase

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import('preline');
 import {
   createBrowserRouter,
   RouterProvider,
@@ -16,50 +17,57 @@ import AddServices from './Pages/AddServices';
 import MySchedules from './Pages/MySchedules';
 import Moredetails from './Pages/Moredetails';
 import Mybookings from './Pages/Mybookings';
+import Root from './Layout/Root';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home></Home>,
-    errorElement: <ErrorPage></ErrorPage>
+    element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: '/service',
+        element: <Service></Service>
+      },
+      {
+        path: '/addservices',
+        element: <AddServices></AddServices>
+      },
+      {
+        path: '/myservice',
+        element: <MyService></MyService>
+      },
+      {
+        path: '/myschedules',
+        element: <MySchedules></MySchedules>
+      },
+      {
+        path: '/mybooking',
+        element: <Mybookings></Mybookings>
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
+      },
+      {
+        path: '/service/:id',
+        loader: ({ params }) => fetch(`http://localhost:3000/singleservice/${params.id}`),
+        element: <Moredetails></Moredetails>
+      }
+    ],
   },
-  {
-    path: '/service',
-    element: <Service></Service>
-  },
-  {
-    path: '/addservices',
-    element: <AddServices></AddServices>
-  },
-  {
-    path: '/myservice',
-    element: <MyService></MyService>
-  },
-  {
-    path: '/myschedules',
-    element: <MySchedules></MySchedules>
-  },
-  {
-    path: '/mybooking',
-    element: <Mybookings></Mybookings>
-  },
-  {
-    path: '/login',
-    element: <Login></Login>
-  },
-  {
-    path: '/register',
-    element: <Register></Register>
-  },
-  {
-    path: '/service/:id',
-    loader: ({ params }) => fetch(`http://localhost:3000/singleservice/${params.id}`),
-    element: <Moredetails></Moredetails>
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className='container mx-auto'>
+  <div >
     <React.StrictMode>
       <AuthProvider>
         <RouterProvider router={router} />
@@ -67,3 +75,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </React.StrictMode>,
   </div>
 )
+
+

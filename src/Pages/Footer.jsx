@@ -9,6 +9,9 @@ const Footer = () => {
                     <div className="text-center">
                         <h3 className="text-cyan-600 text-2xl font-semibold">Clothing Swap</h3>
                     </div>
+                    <div className="my-4">
+                        <hr />
+                    </div>
                     <nav class="flex flex-wrap justify-center -mx-5 -my-2">
                     <ul class="flex flex-wrap items-center gap-10 mb-6 text-sm font-medium sm:mb-0 dark:text-gray-400">
                             <Link to="/">

@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import GoogleLogin from "../components/GoogleLogin";
 import Header from "../components/Header";
-import swal from "sweetalert";
 import axios from "axios";
+import swal from "sweetalert";
 
 
 const Register = () => {
@@ -42,6 +42,11 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
+                axios.post(`http://localhost:3000/jwt`, { email }, { withCredentials: true })
+                    .then(res => {
+                        swal("Good job!", "You clicked the button!", "success");
+                        navigate('/')
+                    })
                 navigate('/')
 
             })
