@@ -30,6 +30,7 @@ const Mybookings = () => {
                                     alt="image"
                                     class="object-cover w-full h-full"
                                 />
+
                             </div>
                             <div class="p-6">
                                 <h6 class="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal ">
@@ -52,7 +53,6 @@ const Mybookings = () => {
                                 </Link>
                             </div>
                         </div>
-
 
                     </div>
                 })
