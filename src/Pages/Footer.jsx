@@ -7,7 +7,9 @@ const Footer = () => {
             <footer class="bg-white">
                 <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
                     <div className="text-center">
-                        <h3 className="text-cyan-600 text-2xl font-semibold">Clothing Swap</h3>
+                        <div className="flex justify-center items-center">
+                            <img src="https://www.professionalbookhouse.com/image/catalog/logo/logo2.png" alt="" />
+                        </div>
                     </div>
                     <div className="my-4">
                         <hr />
@@ -61,7 +63,7 @@ const Footer = () => {
                         </a>
                     </div>
                     <p class="mt-8 text-base leading-6 text-center text-gray-400">
-                        © 2023 Clothing Swap. All rights reserved.
+                        © 2023 Book Shop. All rights reserved.
                     </p>
                 </div>
             </footer>

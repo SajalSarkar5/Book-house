@@ -40,7 +40,7 @@ const Login = () => {
                 <h1 className="text-3xl font-semibold text-cyan-400 text-center"> Login Page</h1>
             </div>
 
-            <div className="hero min-h-screen">
+            <di0 v className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-[#0d3b66]">
                         <form onSubmit={handleLogin} className="card-body">
@@ -68,7 +68,7 @@ const Login = () => {
                     </div>
                 </div>
 
-            </div>
+            </di0>
         </div>
     );
 };

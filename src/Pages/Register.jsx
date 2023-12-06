@@ -60,7 +60,6 @@ const Register = () => {
 
     return (
         <div>
-            <Header></Header>
             <div className="mt-8">
                 <h1 className="text-3xl font-semibold text-cyan-400 text-center"> Register Page</h1>
             </div>

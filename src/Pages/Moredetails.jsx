@@ -20,7 +20,8 @@ const Moredetails = () => {
         const date = e.target.date.value;
         const text = e.target.text.value;
         const price = e.target.price.value;
-        const data = { name, image, useremail, buyuserEmail, date, text, price, type, area }
+        const status = 'pending'
+        const data = { name, image, useremail, buyuserEmail, date, text, price, type, area, status }
         axios.post('https://backend-nine-umber.vercel.app/booking', data, { withCredentials: true })
             .then(res => {
                 document.getElementById('my_modal_4').close()

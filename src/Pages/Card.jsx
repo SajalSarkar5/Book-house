@@ -10,6 +10,7 @@ const Card = () => {
     useEffect(() => {
         axios.get(`https://backend-nine-umber.vercel.app/services`, { withCredentials: true })
             .then(res => {
+                console.log(res.data)
                 setCardImage(res.data)
             })
     }, [])
